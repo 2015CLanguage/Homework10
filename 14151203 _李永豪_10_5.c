@@ -46,6 +46,7 @@ int main(int argc, const char * argv[]) {
             printf("%8.2f",stu[i].ave);
         }
     }
+    fclose(fp);
     return 0;
 }
 void aver(struct stu_infor stu[5]){

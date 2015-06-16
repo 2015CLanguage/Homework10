@@ -45,6 +45,7 @@ int main(int argc, const char * argv[]) {
             break;
         }
     }
+    fclose(fp);
     //write in file stu_add
     printf("\nstu_add:\n");
     fp=fopen("stu_add.dat","w");
@@ -67,5 +68,6 @@ int main(int argc, const char * argv[]) {
             printf("%5.2f",stu[i].grade[j]);
         printf("%5.2f",stu[i].ave);
     }
+     fclose(fp);
     return 0;
 }

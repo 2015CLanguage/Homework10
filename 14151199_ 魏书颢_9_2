@@ -1,0 +1,26 @@
+#include"stdio.h"
+int days(int day,int month,int year);
+struct date
+{
+	int year;
+    int month;
+    int day;
+}cal;
+int days(int day,int month,int year)
+{
+	int day_sum,i;
+	day_sum=day;
+	char months[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+	for(i=0;i<month;i++)
+		day_sum=day_sum+months[i];
+	if(((year/4==0&&year/100!=0)||(year/400==0))&&(month>=3))
+		day_sum=day_sum+1;
+	return(day_sum);
+}
+void main()
+{
+	int a;
+	scanf("%d,%d,%d",&cal.year,&cal.month,&cal.day);
+	a=days(cal.day,cal.month,cal.year);
+	printf("%d",a);
+}

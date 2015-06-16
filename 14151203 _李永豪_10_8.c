@@ -45,6 +45,7 @@ int main(int argc, const char * argv[]) {
             break;
         }
     }
+    fclose(fp);
     //write in file stu_sort
     printf("\nnewstu_sort:\n");
     fp=fopen("stu_sort.dat","w");
@@ -64,6 +65,6 @@ int main(int argc, const char * argv[]) {
             printf("%5.2f",stu[i].grade[j]);
         printf("%5.2f",stu[i].ave);
     }
-
+    fclose(fp);
     return 0;
 }

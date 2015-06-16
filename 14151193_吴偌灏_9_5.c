@@ -25,7 +25,7 @@ void main()
 			id=i;
 		}
 	}
-	for (i=0; i<10; i++)	printf("%.2f",s[i].aver);
+	for (i=0; i<10; i++)	printf("%.2f\n",s[i].aver);
 	printf("The Highest student:");
 	printf("%d %s ",s[id].Id,s[id].Name);
 	for (j=0; j<3; j++)  printf("%.2lf ",s[id].grade[j]);

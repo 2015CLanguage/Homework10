@@ -13,6 +13,7 @@ int main()
 	scanf("%d%d%D",&d.year,&d.month,&d.day);
 	num=days(d.year,d.month,d.day);
 	printf("%d",num);
+	return 0;
 }
 
 int days(int year,int month,int day)

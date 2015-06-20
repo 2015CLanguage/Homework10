@@ -50,7 +50,6 @@ void main()
 	}//排序
 	
 
-	printf("现在为:\n");
 	fp=fopen("stud_sort1","w");
 	for(i=0;i<6;i++)
 	{

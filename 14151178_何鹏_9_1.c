@@ -14,6 +14,7 @@ int main()
 	scanf("%d%d%D",&d.year,&d.month,&d.day);
 	num=cal(p);
 	printf("%d",num);
+	return 0;
 }
 
 int cal(struct date *p)

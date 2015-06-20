@@ -27,7 +27,7 @@ int cal(struct date *p)
 	int a[12]={31,28,31,30,31,30,31,31,30,31,30,31};
 	for(i=0;i<(p->month);i++)
 	    num=num+a[i];
-	if(k==0||(k=1&&(p->month)>2))
+	if(k==1&&(p->month)>2)
 	    num++;
 	return num;
 }

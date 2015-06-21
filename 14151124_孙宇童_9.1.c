@@ -1,6 +1,4 @@
 #include<stdio.h>
-int sum_day(int month,int day);
-int leap(int year);
 int main(void)
 {	int day_tab[13]={0,31,28,31,30,31,30,31,31,30,31,30,31};
 		int year,month,day,i,days=0;

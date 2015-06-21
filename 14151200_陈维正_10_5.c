@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define N 3
+#define N 10
 struct Student
 {
 char num[10];
@@ -42,12 +42,11 @@ for(i=0;i<N;i++)
 		scanf("%f",&stu[i].score[j]);
 		}
 	}
-for(i=0,sum=0;i<N;i++)
+for(i=0;i<N;i++)
 	{
+	sum=0
 	for(j=0;j<3;j++)
-		{
-		sum=sum+stu[i].score[j];
-		}
+		{sum=sum+stu[i].score[j];}
 	stu[i].avep=sum/3.0;
 	}
 save();

@@ -44,7 +44,7 @@ for(i=0;i<N;i++)
 	}
 for(i=0;i<N;i++)
 	{
-	sum=0
+	sum=0;
 	for(j=0;j<3;j++)
 		{sum=sum+stu[i].score[j];}
 	stu[i].avep=sum/3.0;

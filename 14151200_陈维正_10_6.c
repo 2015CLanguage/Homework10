@@ -5,13 +5,13 @@ struct Student
 {
 char num[10];
 char name[10];
-float score[3];
+float score[3]={0};
 float avep;
 }stu[N];
 
 int main()
 {
-int i;
+int i,j;
 float temp;
 FILE*fp,*in;
 if((fp=fopen("stu.dat","r"))==NULL)
@@ -37,7 +37,14 @@ for(i=0;i<N;i++)
 	{
 	if(fwrite(&stu[i],sizeof(struct Student),1,in)!=1)
 		printf("file write error\n");
-	fclose(in);
+	fclose(fp);
+	}
+for(i=0;i<N;i++)
+	{
+	printf("%s%s",stu[i].num,stu[i].name);
+	for(j=0;j<3;j++)
+		{printf("%8.2f",stu[i].score[j]);}
+	printf("%8.2f\n",stu[i].avep);
 	}
 return 0;
 }

@@ -20,6 +20,14 @@ if((fp=fopen("stu.dat","r"))==NULL)
 	exit(0);
 	}//打开文件 
 for(i=0;i<N;i++)
+{
+	fread(&stu[i],sizeof(struct Student),1,fp);
+	printf("%s %s",stu[i].num,stu[i].name);
+	for(j=0;j<3;j++)
+		printf("%8.2f",stu[i].score[j]);
+	printf("%8.2f\n",stu[i].avep);
+}
+for(i=0;i<N;i++)
 	{
 	if(stu[i].avep<stu[i+1].avep)
 		{
@@ -28,16 +36,11 @@ for(i=0;i<N;i++)
 		stu[i].avep=temp;
 		}
 	}
-if((in=fopen("stu_sort","wb"))==NULL)
-	{
-	printf("can not open the file!\n");
-	exit(0);
-	}
+in=fopen("stu_sort.dat","w");
 for(i=0;i<N;i++)
 	{
 	if(fwrite(&stu[i],sizeof(struct Student),1,in)!=1)
 		printf("file write error\n");
-	fclose(fp);
 	}
 for(i=0;i<N;i++)
 	{
@@ -46,5 +49,7 @@ for(i=0;i<N;i++)
 		{printf("%8.2f",stu[i].score[j]);}
 	printf("%8.2f\n",stu[i].avep);
 	}
+fclose(fp);
+fclose(in);
 return 0;
 }

@@ -16,16 +16,7 @@ void main()
 		printf("can not open.\n");
 		exit(0);
 	}
-	printf("文件 stud:");
 	for (i = 0; fread(&stu[i], sizeof(struct Student), 1, fp) != 0; i++)
-	{
-		printf("\n%8d%8s", stu[i].num, stu[i].name);
-		for (j = 0; j < 3; j++)
-		{
-			printf("%8d", stu[i].score[j]);
-		}
-		printf("%10.2f", stu[i].ave);
-	}
 	printf("\n");
 	fclose(fp);
 	n = i;                                        //对数据进行排序
@@ -41,17 +32,10 @@ void main()
 			}
 		}
 	}
-	printf("排序后:\n");
 	fp = fopen("stu_sort", "w");                             //输出排序结果
 	for (i = 0;i<n; i++)
 	{
 		fwrite(&stu[i], sizeof(struct Student), 1, fp);
-		printf("\n%8d%8s", stu[i].num, stu[i].name);
-		for (j = 0; j < 3; j++)
-		{
-			printf("%8d", stu[i].score[j]);
-		}
-		printf("%10.2f", stu[i].ave);
 	}
 	printf("\n");
 	fclose(fp);

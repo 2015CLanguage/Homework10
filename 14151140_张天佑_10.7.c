@@ -34,7 +34,7 @@ void main()
 		printf("%10.2f", stu[i].ave);
 	}
 	printf("\n");
-	n = i;                                        //对数据进行排序
+	n = i;                                       
 	for (b = 0; stu[b].ave>a.ave&&b < n; b++)
 	printf("插入后:\n");
 	fp1 = fopen("sort1.dat", "w");                             //输出排序结果

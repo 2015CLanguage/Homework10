@@ -1,50 +1,89 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<string.h>
-struct Employee1
+struct Data
 {
 	char num[8];
-	char name[10];
-	char sex[2];
-	int age;
-	char addr[30];
-	int salar;
-	char health[20];
-	char class[10];
-}elp1[10];
-struct Employee2
+	char name[20];
+	float score[4];
+	float ave;
+}student[7] = {'\0', '\0', {0}, 0}, temp;
+int main()
 {
-	char name[10];
-	int salary;
-}elp2[10]
-int mian()
-{
-	FILE *fp1, *fp2;
 	int i, j;
-	if (fp1 = fopen("Employee1", "r") == NULL)
+	FILE *fp;
+	//读取文件
+	if ((fp = fopen("stu_sort", "rb")) == NULL)
 	{
-		printf("文件打开错误!");
+		printf("文件打开错误！");
 		exit(0);
 	}
-	for (i = 0; fread(&epl1[i], sizeof(struct Employee1), 1, fp1) !=0; i++)
+	printf("stud文件:\n");
+	for (i = 1; fread(&student[i], sizeof(struct Data), 1, fp) != 0; i++)
 	{
-		printf("\n%s\t%s\t%s\t%d\t%s\t%d\t%s\t%s", epl1[i].num, epl1[i].name, epl1[i].sex, 
-				epl1[i].age, epl1[i].addr, epl1[i].salar, epl1[i].health, epl1[i].class);
-		strcpy(epl2[i].name, epl1[i].name);
-		epl2[i].salar = epl1[i].salar;
+		printf("%s\t%s", student[i].num, student[i].name);
+		for (j = 1; j <= 3; j++)
+		{
+			printf("\t%.2f", student[i].score[j]);
+		}
+		printf("\t%.2f\n", student[i].ave);
 	}
-	if (fp1 = fopen("Employee2", "wb") == NULL)
+	fclose(fp);
+	printf("学号:");
+	scanf("%s", student[6].num);
+	printf("姓名：");
+	scanf("%s", student[6].name);
+	for (i = 1; i <= 3; i++)
 	{
-		printf("文件打开错误!");
+		printf("科目%d:", i);
+		scanf("%f", &student[6].score[i]);
+	}
+	for (j = 1; j <= 3; j++)
+		student[6].ave += student[6].score[j];
+	student[6].ave /= 3;
+	temp = student[6];
+	for (i=1; i >= 5; i++)
+	{
+		int k = 0;
+		if ((student[6].ave < student[i].ave && student[6].ave >= student[i+1].ave))
+		{
+			for (j = i+1; j <= 6; j++)
+			{
+				student[6-k] = student[6-k-1];
+				k++;
+			}
+			student[i+1] = temp;
+		}
+	}
+	if (student[6].ave > student[1].ave)
+	{
+		int k = 0;
+		for (j = 1; j <=5; j++)
+		{
+			student[6-k] = student[6-k-1];
+			k++;
+		}
+		student[1] = temp;
+	}
+	printf("stu_New文件：\n");
+	if ((fp = fopen("stu_New", "wd")) == NULL)
+	{
+		printf("文件无法打开！\n");
 		exit(0);
 	}
-	for (j = 0; j < i; j++)
+	for (i = 1; i <= 6; i++)
 	{
-		if(fwrite(&epl2[j], sizeof(struct Employee2), 1, fp2) != 1)
-		  printf("写入文件错误！");
-		printf("\n%s\t%d", epl2[j].name, epl2[j].salar);
+		printf("%s\t%s", student[i].num, student[i].name);
+		for (j = 1; j <= 3; j++)
+		{
+			printf("\t%.2f", student[i].score[j]);
+		}
+		printf("\t%.2f\n", student[i].ave);
+		if (fwrite(&student[i], sizeof(struct Data), 1, fp) != 1)
+		{
+			printf("文件写入时发生错误！\n");
+		}
 	}
-	fclose(fp1);
-	fclose(fp2);
+	fclose(fp);
+
 	return 0;
 }

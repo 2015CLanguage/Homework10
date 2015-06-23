@@ -5,8 +5,11 @@ struct data
 	int month;
 	int day;
 }D;
-void day(struct data D)
+
+void main()
 {
+	printf("请输入年、月、日：");
+	scanf("%d,%d,%d",&D.year,&D.month,&D.day);
 	int i,s=0;
 	for(i=1;i<D.month;i++)
 	{
@@ -31,10 +34,4 @@ void day(struct data D)
 	}
 	s+=D.day;
 	printf("第%d天\n",s);
-}
-void main()
-{
-	printf("请输入年、月、日：");
-	scanf("%d,%d,%d",&D.year,&D.month,&D.day);
-	day(D);
 }
